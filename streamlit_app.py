@@ -106,6 +106,7 @@ crew = Crew(
 final = crew.kickoff()
 
 # Execute Research
+with st.spinner("Consulting the spirits..."):
 result = crew.kickoff()
 
 #optional debug
