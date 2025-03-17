@@ -82,12 +82,6 @@ research_task = Task(
     agent=researcher
 )
 
-length_mapping = {
-    "short": "One or two sentences.",
-    "medium": "A short paragraph.",
-    "long": "A detailed response of multiple paragraphs."
-}
-
 write_task = Task(
     description=f"Write advice based on the research findings for: {topic}.",
     expected_output=f"Outline detailed notes.",
@@ -104,8 +98,8 @@ summary_task = Task(
 
 # Assemble Crew
 crew = Crew(
-    agents=[researcher, psychic],
-    tasks=[research_task, write_task],
+    agents=[researcher, writer, psychic],
+    tasks=[research_task, write_task, summary_task],
     process=Process.sequential,
     verbose=True,
     manager_llm="gpt-3.5-turbo",
@@ -115,7 +109,9 @@ final = crew.kickoff()
 
 # Execute Research
 result = crew.kickoff()
-print(f"DEBUG: Query being used for search: {topic}")
+
+#optional debug
+#print(f"DEBUG: Query being used for search: {topic}")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
