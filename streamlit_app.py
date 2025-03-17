@@ -17,10 +17,8 @@ serper_api_key = st.text_input("Enter your Serper API key", type="password")
 # IMPORTANT: Set the environment variable for OPENAI_API_KEY before any dependent libraries are loaded
 if gpt_api_key:
     os.environ["OPENAI_API_KEY"] = gpt_api_key
-    response = client.chat.completions.create
     model="gpt-3.5-turbo",
     messages= {"role": "system", "content": "You are a helpful assistant"}
-    {"role": "user", "content": topic}
 if serper_api_key:
     os.environ["SERPER_API_KEY"] = serper_api_key
 
@@ -109,7 +107,7 @@ crew = Crew(
     tasks=[research_task, write_task],
     process=Process.sequential,
     verbose=True,
-    manager_llm=client,
+    manager_llm=model,
         manager_callbacks=["Crew Manager"]
     )
 final = crew.kickoff()
