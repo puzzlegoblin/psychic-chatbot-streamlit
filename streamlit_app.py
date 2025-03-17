@@ -107,7 +107,7 @@ final = crew.kickoff()
 
 # Execute Research
 with st.spinner("Consulting the spirits..."):
-result = crew.kickoff()
+    result = crew.kickoff()
 
 #optional debug
 #print(f"DEBUG: Query being used for search: {topic}")
