@@ -1,9 +1,6 @@
 import os
-import sqlite3
 import streamlit as st
-import pysqlite3 
-import sys 
-sys.modules[sqlite3] = sys.modules.pop(pysqlite3)
+import pysqlite3 as sqlite3
 
 st.write("LD_LIBRARY_PATH:", os.environ.get("LD_LIBRARY_PATH"))
 st.write("SQLite version:", sqlite3.sqlite_version)
