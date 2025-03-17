@@ -2,3 +2,4 @@ streamlit
 openai
 crewai
 crewai_tools
+pysqlite3-binary
