@@ -1,10 +1,13 @@
 import os
-import streamlit as st
-import pysqlite3
 import sys
+import pysqlite3  # Ensure pysqlite3-binary is installed
+
+# Replace the built-in sqlite3 module with pysqlite3
 sys.modules['sqlite3'] = pysqlite3
 
-st.write("LD_LIBRARY_PATH:", os.environ.get("LD_LIBRARY_PATH"))
+import sqlite3  # This now refers to pysqlite3
+import streamlit as st
+
 st.write("SQLite version:", sqlite3.sqlite_version)
 
 from crewai import Crew, Process, Agent, Task
