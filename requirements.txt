@@ -3,3 +3,4 @@ openai
 crewai
 crewai_tools
 pysqlite3-binary
+databricks
