@@ -10,8 +10,10 @@ import streamlit as st
 from openai import OpenAI
 
 # Set API keys via user input
-gpt_api_key = st.text_input("Enter your OpenAI API key", type="password")
-serper_api_key = st.text_input("Enter your Serper API key", type="password")
+with st.sidebar:
+    st.header("Configuration")
+    gpt_api_key = st.text_input("Enter your OpenAI API key", type="password")
+    serper_api_key = st.text_input("Enter your Serper API key", type="password")
 
 # IMPORTANT: Set the environment variable for OPENAI_API_KEY before any dependent libraries are loaded
 if gpt_api_key:
