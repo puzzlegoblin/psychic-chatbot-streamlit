@@ -33,10 +33,13 @@ st.title("Your New Favourite Psychic")
 st.write("The Future is Closer Than You Think")
 
 # User-provided inputs
-st.title("💬 Chat with our psychic")
-date_of_birth = st.text_input("When were you born? (enter your birthday in this format: 15 May 1990)")
-time_of_birth = st.text_input("What time were you born? (enter your time of birth in this format: 14:30")
-city_of_birth = st.text_input("Where where you born? (enter the closest city to your birth place: such as Seattle or New York")
+st.subheader("💬 Chat with our psychic")
+col1, col2 = st.columns(2)
+with col1:
+    date_of_birth = st.text_input("Date of Birth (e.g., 15 May 1990)")
+    time_of_birth = st.text_input("Time of Birth (e.g., 14:30)")
+with col2:
+    city_of_birth = st.text_input("City of Birth (e.g., New York)")
 research_question = st.text_input("What question do you have for the spirits?")
 
 # Construct research topic
