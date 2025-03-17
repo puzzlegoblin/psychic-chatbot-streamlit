@@ -4,4 +4,3 @@ crewai
 crewai_tools
 pysqlite3-binary
 databricks.sdk
-databricks_query_tool
