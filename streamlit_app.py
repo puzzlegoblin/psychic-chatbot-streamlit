@@ -108,7 +108,7 @@ crew = Crew(
     tasks=[research_task, write_task],
     process=Process.sequential,
     verbose=True,
-    manager_llm=client,
+    manager_llm="gpt-3.5-turbo",
         manager_callbacks=["Crew Manager"]
     )
 final = crew.kickoff()
