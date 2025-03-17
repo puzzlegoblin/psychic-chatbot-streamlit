@@ -9,8 +9,6 @@ import sqlite3  # This now refers to pysqlite3
 import streamlit as st
 from openai import OpenAI
 
-st.write("SQLite version:", sqlite3.sqlite_version)
-
 # Set API keys via user input
 gpt_api_key = st.text_input("Enter your OpenAI API key", type="password")
 serper_api_key = st.text_input("Enter your Serper API key", type="password")
