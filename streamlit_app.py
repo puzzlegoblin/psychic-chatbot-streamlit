@@ -117,5 +117,8 @@ final = crew.kickoff()
 result = crew.kickoff()
 print(f"DEBUG: Query being used for search: {topic}")
 
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
 st.session_state.messages.append({"role": "assistant", "content": result})
 st.chat_message("assistant").write(result)
