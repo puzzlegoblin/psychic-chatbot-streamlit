@@ -7,6 +7,7 @@ sys.modules['sqlite3'] = pysqlite3
 
 import sqlite3  # This now refers to pysqlite3
 import streamlit as st
+from openai import OpenAI
 
 st.write("SQLite version:", sqlite3.sqlite_version)
 
@@ -25,7 +26,6 @@ if serper_api_key:
 
 from crewai import Crew, Process, Agent, Task
 from crewai_tools import SerperDevTool, WebsiteSearchTool
-from openai import OpenAI
 from typing import Any, Dict
 
 #Streamlit UI
