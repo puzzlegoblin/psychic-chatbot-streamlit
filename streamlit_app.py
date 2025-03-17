@@ -10,6 +10,20 @@ import streamlit as st
 
 st.write("SQLite version:", sqlite3.sqlite_version)
 
+# Set API keys via user input
+gpt_api_key = st.text_input("Enter your OpenAI API key", type="password")
+serper_api_key = st.text_input("Enter your Serper API key", type="password")
+
+# IMPORTANT: Set the environment variable for OPENAI_API_KEY before any dependent libraries are loaded
+if gpt_api_key:
+    os.environ["OPENAI_API_KEY"] = gpt_api_key
+    response = client.chat.completions.create
+    model="gpt-3.5-turbo",
+    messages= {"role": "system", "content": "You are a helpful assistant"}
+    {"role": "user", "content": topic}
+if serper_api_key:
+    os.environ["SERPER_API_KEY"] = serper_api_key
+
 from crewai import Crew, Process, Agent, Task
 from crewai_tools import SerperDevTool, WebsiteSearchTool
 from openai import OpenAI
@@ -18,10 +32,6 @@ from typing import Any, Dict
 #Streamlit UI
 st.title("Your New Favourite Psychic")
 st.write("The Future is Closer Than You Think")
-
-# Set API keys
-gpt_api_key = st.text_input("Enter your OpenAI API key", type="password")
-serper_api_key = st.text_input("Enter your Serper API key", type="password")
 
 # User-provided inputs
 st.title("💬 Chat with our psychic")
@@ -34,14 +44,6 @@ research_question = st.text_input("What question do you have for the spirits?")
 topic = (f"Person born on {date_of_birth} at {time_of_birth} in {city_of_birth}. "
          f"{research_question}")
 print(f"DEBUG: Query being used for search: {topic}")
-
-if gpt_api_key:
-    client = OpenAI(api_key=gpt_api_key)
-
-    response = client.chat.completions.create
-    model="gpt-3.5-turbo",
-    messages= {"role": "system", "content": "You are a helpful assistant"}
-    {"role": "user", "content": topic}
 
 # Define Agents
 researcher = Agent(
