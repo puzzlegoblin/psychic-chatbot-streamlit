@@ -1,4 +1,9 @@
+import os
+import sqlite3
 import streamlit as st
+
+st.write("LD_LIBRARY_PATH:", os.environ.get("LD_LIBRARY_PATH"))
+st.write("SQLite version:", sqlite3.sqlite_version)
 
 from crewai import Crew, Process, Agent, Task
 from crewai_tools import SerperDevTool, WebsiteSearchTool
